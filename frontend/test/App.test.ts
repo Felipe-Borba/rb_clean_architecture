@@ -2,6 +2,12 @@ import { expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 import AppVue from '../src/App.vue'
 
+test('Deve testar a todo list vazia', async function () {
+   const wrapper = mount(AppVue, {})
+   expect(wrapper.get('.completed').text()).toBe('Completed: 0%')
+   expect(wrapper.get('.total').text()).toBe('Total: 0')
+ })
+ 
 test('Deve testar a todo list', async function () {
   const wrapper = mount(AppVue, {})
   await wrapper.get('.todo-description-input').setValue('A')

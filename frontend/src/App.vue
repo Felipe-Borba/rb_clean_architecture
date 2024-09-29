@@ -10,6 +10,7 @@ function getTotal() {
 
 function getCompleted() {
   const total = getTotal()
+  if (total === 0) return 0
   const completed = todos.filter((todo: any) => todo.done).length
   return Math.round((completed / total) * 100)
 }
@@ -22,7 +23,7 @@ function toggleDone(todo: any) {
   todo.done = !todo.done
 }
 
-function deleteTodo(todo:any) {
+function deleteTodo(todo: any) {
   todos.splice(todos.indexOf(todo), 1)
 }
 </script>
