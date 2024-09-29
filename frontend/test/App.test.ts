@@ -1,6 +1,7 @@
 import { expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 import AppVue from '../src/App.vue'
+import TodosGateway from '../src/infra/gateway/TodosGateway'
 
 function sleep(time: number) {
   return new Promise((resolve) => {
@@ -11,15 +12,37 @@ function sleep(time: number) {
 }
 
 test('Deve testar a todo list vazia', async function () {
-  const wrapper = mount(AppVue, {})
-  await sleep(100);
+  const todosGateway: TodosGateway = {
+    getTodos: async function (): Promise<any> {
+      return [{ description: 'My first todo', done: false }]
+    }
+  }
+  const wrapper = mount(AppVue, {
+    global: {
+      provide: {
+        todosGateway
+      }
+    }
+  })
+  await sleep(100)
   expect(wrapper.get('.total').text()).toBe('Total: 1')
   expect(wrapper.get('.completed').text()).toBe('Completed: 0%')
 })
 
 test('Deve testar a todo list', async function () {
-  const wrapper = mount(AppVue, {})
-  await sleep(100);
+  const todosGateway: TodosGateway = {
+    getTodos: async function (): Promise<any> {
+      return [{ description: 'My first todo', done: false }]
+    }
+  }
+  const wrapper = mount(AppVue, {
+    global: {
+      provide: {
+        todosGateway
+      }
+    }
+  })
+  await sleep(100)
   await wrapper.get('.todo-description-input').setValue('A')
   await wrapper.get('.add-todo-button').trigger('click')
   expect(wrapper.get('.total').text()).toBe('Total: 2')
@@ -38,8 +61,19 @@ test('Deve testar a todo list', async function () {
 })
 
 test('Não deve deixar inserir todo duplicado', async function () {
-  const wrapper = mount(AppVue, {})
-  await sleep(100);
+  const todosGateway: TodosGateway = {
+    getTodos: async function (): Promise<any> {
+      return [{ description: 'My first todo', done: false }]
+    }
+  }
+  const wrapper = mount(AppVue, {
+    global: {
+      provide: {
+        todosGateway
+      }
+    }
+  })
+  await sleep(100)
   await wrapper.get('.todo-description-input').setValue('A')
   await wrapper.get('.add-todo-button').trigger('click')
   await wrapper.get('.todo-description-input').setValue('A')

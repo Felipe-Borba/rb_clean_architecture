@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import axios from 'axios'
-import { onMounted, reactive } from 'vue'
+import { inject, onMounted, reactive } from 'vue'
 import TodosGatewayHttp from './infra/gateway/TodosGatewayHttp'
 
 const todos: any = reactive([])
@@ -31,7 +31,7 @@ function deleteTodo(todo: any) {
 }
 
 onMounted(async () => {
-  const todosGateway = new TodosGatewayHttp()
+  const todosGateway = inject('todosGateway') as TodosGatewayHttp
   const todosData = await todosGateway.getTodos()
   todos.push(...todosData)
 })
