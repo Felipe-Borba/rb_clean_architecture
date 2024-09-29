@@ -23,6 +23,24 @@ Outro ponto seria não levar as regras de negócio para dentro dos drivers/contr
 Existe duas linha que guiam qualquer código que escrevemos `source code dependency` e `fluxo de controle`.  
 Tradicionalmente elas apontam para o mesmo sentido
 
+## Orientação a objetos
+
+Distribuir a complexidade
+
+1. A arte de proteger a invariância
+2. Imposição da disciplina na transferência indireta de controle
+
+## Piramide de Teste
+
+![img](./resources/tests_1.png)
+Fazendo o refactor em entity eu isolo as regras de negócio do front tirando as dependências relacionadas com o vue e deixando os testes mais simples de implementar, fazer e rodar. Permitindo realizar mais teses de comportamento
+
+## Clean Architecture
+
+![img](./resources/clean_architecture.png)
+
+Os use cases meio que vão bater com os componentes
+
 ## Menções de livros
 
 - [Patterns of Enterprise Application Architecture](https://www.amazon.com.br/Patterns-Enterprise-Application-Architecture-Martin/dp/0321127420)
