@@ -1,3 +1,4 @@
+import type Todo from '@/entity/Todo'
 import type HttpClient from '../http/HttpClient'
 import type TodosGateway from './TodosGateway'
 
@@ -7,7 +8,7 @@ export default class TodosGatewayHttp implements TodosGateway {
     readonly baseUrl: string
   ) {}
 
-  async getTodos(): Promise<any> {
+  async getTodos(): Promise<Todo[]> {
     return await this.httpClient.get(`${this.baseUrl}/todos`)
   }
 }
