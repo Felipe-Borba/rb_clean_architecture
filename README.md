@@ -41,7 +41,9 @@ A arte de separar responsabilidades
 
 ![img](./resources/clean_architecture.png)
 
-Os use cases meio que vão bater com os componentes
+Os use cases meio que vão bater com os componentes.
+
+Um caso bacana nessa arquitetura é o post que o meu `TodoList` (entity) não deve conhecer o meu `TodosGateway` muito menos o meu `TodoListComponent` (use case) isso é responsabilidade no `TodoListView` (controller) e para fazer essa maracutaia que entra o pattern Observer
 
 ## Menções de livros
 

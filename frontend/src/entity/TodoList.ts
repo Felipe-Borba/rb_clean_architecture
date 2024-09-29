@@ -1,9 +1,11 @@
+import Observable from '@/infra/observer/Observable'
 import Todo from './Todo'
 
-export default class TodoList {
+export default class TodoList extends Observable {
   todos: Todo[]
 
   constructor() {
+    super()
     this.todos = []
   }
 
@@ -20,7 +22,9 @@ export default class TodoList {
 
   addTodo(description: string, done = false) {
     if (this.todos.some((todo) => todo.description === description)) return
-    this.todos.push(new Todo(description, done))
+    const todo = new Todo(description, done)
+    this.notify('add-todo', todo) //seria legal garantir esse comportamento de só add na lista se deu sucesso na api
+    this.todos.push(todo)
   }
 
   addTodos(todos: Todo[]) {
