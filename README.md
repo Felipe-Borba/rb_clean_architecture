@@ -4,7 +4,7 @@ Estudo da live fullCycle com o Rodrigo Branas
 
 # TODO
 
-[ ] Procurar alguma coisa com o backend
+[ ] Procurar alguma coisa com o backend talvez meio funcionalzinha para o express
 
 # Notas
 
@@ -36,6 +36,8 @@ Distribuir a complexidade
 Fazendo o refactor em entity eu isolo as regras de negócio do front tirando as dependências relacionadas com o vue e deixando os testes mais simples de implementar, fazer e rodar. Permitindo realizar mais teses de comportamento
 
 ## Clean Architecture
+
+A arte de separar responsabilidades
 
 ![img](./resources/clean_architecture.png)
 
