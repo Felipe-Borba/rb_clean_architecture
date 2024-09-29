@@ -26,3 +26,13 @@ test('Deve testar a todo list', async function () {
   expect(wrapper.get('.completed').text()).toBe('Completed: 0%')
   expect(wrapper.get('.total').text()).toBe('Total: 1')
 })
+
+test('Não deve deixar inserir todo duplicado', async function () {
+   const wrapper = mount(AppVue, {})
+   await wrapper.get('.todo-description-input').setValue('A')
+   await wrapper.get('.add-todo-button').trigger('click')
+   await wrapper.get('.todo-description-input').setValue('A')
+   await wrapper.get('.add-todo-button').trigger('click')
+   expect(wrapper.get('.total').text()).toBe('Total: 1')
+   expect(wrapper.get('.completed').text()).toBe('Completed: 0%')
+ })
