@@ -15,7 +15,8 @@ test('Deve testar a todo list vazia', async function () {
   const todosGateway: TodosGateway = {
     getTodos: async function (): Promise<any> {
       return [{ description: 'My first todo', done: false }]
-    }
+    },
+    postTodos: async function (): Promise<void> {}
   }
   const wrapper = mount(AppVue, {
     global: {
@@ -33,6 +34,13 @@ test('Deve testar a todo list', async function () {
   const todosGateway: TodosGateway = {
     getTodos: async function (): Promise<any> {
       return [{ description: 'My first todo', done: false }]
+    },
+    postTodos: async function (): Promise<void> {
+      //TODO deveria ser testado a chamada disso para ver se o observer funciona
+      // mas seria melhor ainda criar um teste da view
+      // e esse comentário só está aqui para mostrar que os testes só estão quebrando
+      // as camadas mais externas da aplicação a partir da qual eu mexi
+      // nesse caso seria o equivalente ao controller do clean architecture
     }
   }
   const wrapper = mount(AppVue, {
@@ -64,7 +72,8 @@ test('Não deve deixar inserir todo duplicado', async function () {
   const todosGateway: TodosGateway = {
     getTodos: async function (): Promise<any> {
       return [{ description: 'My first todo', done: false }]
-    }
+    },
+    postTodos: async function (): Promise<void> {}
   }
   const wrapper = mount(AppVue, {
     global: {

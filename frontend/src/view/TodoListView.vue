@@ -14,9 +14,8 @@ onMounted(async () => {
   todoList.addTodos(todosData)
 
   todoList.on(
-    new Observer('add-todo', (todo: Todo) => {
-      console.log(todo) //post do gateway
-      if (todo.description === 'C') throw new Error('Teste erro no backend')
+    new Observer('add-todo', async (todo: Todo) => {
+      await todosGateway.postTodos(todo)
     })
   )
 })

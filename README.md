@@ -41,7 +41,8 @@ A arte de separar responsabilidades
 
 ![img](./resources/clean_architecture.png)
 
-Os use cases meio que vão bater com os componentes.
+Os use cases meio que vão bater com os componentes. Legal notar que aqui foi feita a analogia do use case ser o componente porque ele vai orquestrar a utilização das entity e a view com o controller porque ela é quem vai interagir com os recursos externos da aplicação (os driven actors do portAdapter) (api).   
+Legal notar também que foi aceito o acoplamento com o vue nessas camadas, mas somente o useCase tem código relacionado com ui.    
 
 Um caso bacana nessa arquitetura é o post que o meu `TodoList` (entity) não deve conhecer o meu `TodosGateway` muito menos o meu `TodoListComponent` (use case) isso é responsabilidade no `TodoListView` (controller) e para fazer essa maracutaia que entra o pattern Observer
 

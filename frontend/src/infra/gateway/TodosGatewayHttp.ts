@@ -8,6 +8,10 @@ export default class TodosGatewayHttp implements TodosGateway {
     readonly baseUrl: string
   ) {}
 
+  async postTodos(todo: Todo): Promise<void> {
+    return await this.httpClient.post(`${this.baseUrl}/todos`, todo)
+  }
+
   async getTodos(): Promise<Todo[]> {
     return await this.httpClient.get(`${this.baseUrl}/todos`)
   }
