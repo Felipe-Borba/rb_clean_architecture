@@ -1,9 +1,13 @@
-import axios from 'axios'
+import type HttpClient from '../http/HttpClient'
 import type TodosGateway from './TodosGateway'
 
 export default class TodosGatewayHttp implements TodosGateway {
+  constructor(
+    readonly httpClient: HttpClient,
+    readonly baseUrl: string
+  ) {}
+
   async getTodos(): Promise<any> {
-    const response = await axios.get('http://localhost:3000/todos')
-    return response.data
+    return await this.httpClient.get(`${this.baseUrl}/todos`)
   }
 }

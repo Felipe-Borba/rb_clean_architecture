@@ -30,3 +30,19 @@ test('Não deve deixar inserir todo duplicado', () => {
   expect(todoList.getTotal()).toBe(1)
   expect(todoList.getCompleted()).toBe(0)
 })
+
+test('Deve carregar uma lista de todos corretamente', () => {
+  const todoList = new TodoList()
+  const todos = [
+    { description: 'A', done: false },
+    { description: 'B', done: true }
+  ]
+  todoList.addTodos(todos);
+  expect(todoList.getTotal()).toBe(2)
+
+  expect(todoList.todos[0].description).toBe("A")
+  expect(todoList.todos[0].done).toBe(false)
+
+  expect(todoList.todos[1].description).toBe("B")
+  expect(todoList.todos[1].done).toBe(true)
+})
